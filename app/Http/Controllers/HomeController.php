@@ -25,13 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Отримання першої компанії
         $company = Company::orderBy('id', 'asc')->first();
-
-        // Отримання філій компанії
         $branches = $company ? $company->branches : [];
-
-        // Передача даних до вигляду
         return view('home', compact('company', 'branches'));
+    }
+
+    /**
+     * Get the company logo for the header.
+     *
+     * @return string
+     */
+    public static function getCompanyLogo()
+    {
+        $company = Company::orderBy('id', 'asc')->first();
+        return $company && $company->logo ? asset($company->logo) : asset('/images/default-logo.png');
     }
 }
