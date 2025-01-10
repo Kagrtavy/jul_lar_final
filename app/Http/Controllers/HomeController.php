@@ -27,7 +27,10 @@ class HomeController extends Controller
     {
         $company = Company::orderBy('id', 'asc')->first();
         $branches = $company ? $company->branches : [];
-        return view('home', compact('company', 'branches'));
+        return view('home', [
+            'company' => $company,
+            'branches' => $branches,
+        ]);
     }
 
     /**
