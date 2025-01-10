@@ -10,7 +10,9 @@
             </button>
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                Laravel
+                <img src="{{ \App\Http\Controllers\HomeController::getCompanyLogo() }}"
+                     alt="Company Logo"
+                     style="height: 40px;">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
